@@ -16,17 +16,18 @@ export default function NewCustomer() {
   ]);
   const [totaldoc, setTotaldoc] = React.useState([])
 
-  const handleImageUpload = e => {
-    e.preventDefault();
-    setImage(e.target.files[0])
-  }
+ 
 
+  // add new file in dynamic
   const addNewFile = (e) =>{
     e.preventDefault();
     setDocumenttags([...documenttags,{label:'Document',type:'file'}])
     console.log(documenttags)
   }
 
+
+
+// input fields setState
    const documentUpload = (e) => {
     e.preventDefault();
     const newfile = e.target.files[0];
@@ -38,10 +39,34 @@ export default function NewCustomer() {
     console.log(totaldoc)
   }
 
+const handleAccontType = (e) => {
+  setAccounttype(e.target.value)
+}
+const handleAccountno = (e) => {
+  setAccountno(e.target.value)
+}
+
+const handleDocumenttype = (e) => {
+  setDocumenttype(e.target.value)
+}
+
+ const handleImageUpload = e => {
+    e.preventDefault();
+    setImage(e.target.files[0])
+  }
+
+
+
+// form submit
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(accounttype)
+    console.log(accountno)
+    console.log(documenttype)
+    console.log(image)
     console.log(totaldoc)
   }
+
 
   return <>
   <section className="bg-img">
@@ -57,7 +82,8 @@ export default function NewCustomer() {
     <div className="col-md-6">
       <div>
         <label>Account Type</label>
-        <select>
+        <select onChange={handleAccontType}>
+          <option selected="true" disabled="disabled">select</option>
           <option value="individual">individual</option>
           <option value="joint">joint</option>
         </select>
@@ -65,12 +91,13 @@ export default function NewCustomer() {
 
       <div>
         <label>Account Number</label>
-        <input type="text" name="account_no"/>
+        <input type="text" name="account_no" value={accountno} onChange={handleAccountno}/>
       </div>
 
       <div>
         <label>Document Type</label>
-        <select>
+        <select onChange={handleDocumenttype}>
+          <option selected="true" disabled="disabled">select</option>
           <option value="individual">individual</option>
           <option value="joint">joint</option>
         </select>
