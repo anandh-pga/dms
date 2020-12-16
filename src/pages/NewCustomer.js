@@ -54,9 +54,6 @@ const handleDocumenttype = (e) => {
     e.preventDefault();
     setImage(e.target.files[0])
   }
-
-
-
 // form submit
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -66,71 +63,85 @@ const handleDocumenttype = (e) => {
     console.log(image)
     console.log(totaldoc)
   }
-
-
   return <>
   <section className="bg-img">
     <nav className="navbar navbar-light shadow">
       <span className="navbar-brand mb-0 h1 text-white">DMS</span>
       <div className="form-inline">
-        <button className="btn btn-danger my-2 my-sm-0"><Link to="/">Back</Link></button>
+        <button className="btn btn-warning my-2 my-sm-0"><Link to="/">Back</Link></button>
       </div>
     </nav>
     <form onSubmit={handleSubmit}>
-    <div className="container">
+    <div className="container mt-4">
     <div className="row">
-    <div className="col-md-6">
-      <div>
-        <label>Account Type</label>
-        <select onChange={handleAccontType}>
-          <option selected="true" disabled="disabled">select</option>
-          <option value="individual">individual</option>
-          <option value="joint">joint</option>
-        </select>
+      <div className="col-md-6">
+        <div class="card">
+        <h5 class="card-header bg-primary text-white">Customer Details</h5>
+          <div class="card-body scroll">
+            <div class="form-group row">
+              <label class="col-md-5 col-form-label">Account Type</label>
+                <div class="col-md-7">
+                  <select className="form-control" onChange={handleAccontType}>
+                    <option selected="true" disabled="disabled">select</option>
+                    <option value="individual">individual</option>
+                    <option value="joint">joint</option>
+                  </select>
+                </div>                    
+              </div>
+              <div class="form-group row">
+                <label class="col-md-5 col-form-label">Account Number</label>
+                  <div class="col-md-7">
+                    <input type="text" className="form-control" name="account_no" value={accountno} onChange={handleAccountno}/>
+                </div>       
+              </div>
+              <div class="form-group row">
+                <label class="col-md-5 col-form-label">Document Type</label>
+                  <div class="col-md-7">
+                  <select className="form-control" onChange={handleDocumenttype}>
+                    <option selected="true" disabled="disabled">select</option>
+                    <option value="individual">individual</option>
+                    <option value="joint">joint</option>
+                  </select>
+                </div>       
+              </div>
+              <div class="form-group row">
+                <label class="col-md-5 col-form-label">Profile Image</label>
+                  <div class="col-md-7">
+                  <input type="file" name="file" onChange={handleImageUpload}/>
+                </div>       
+              </div>
+            </div>
+        </div>
       </div>
 
-      <div>
-        <label>Account Number</label>
-        <input type="text" name="account_no" value={accountno} onChange={handleAccountno}/>
-      </div>
-
-      <div>
-        <label>Document Type</label>
-        <select onChange={handleDocumenttype}>
-          <option selected="true" disabled="disabled">select</option>
-          <option value="individual">individual</option>
-          <option value="joint">joint</option>
-        </select>
-      </div>
-       <div>
-        <label>Profile Image</label>
-         <input type="file" name="file" onChange={handleImageUpload}/>
+      <div className="col-md-6" >
+      <div class="card">
+        <h5 class="card-header bg-primary text-white">Customer Details <span className="float-right add-btn" onClick={addNewFile}>Add</span></h5>
+          <div class="card-body scroll">
+          {
+            documenttags.map((doc,index)=>{
+              return(
+                <div className="form-group row justify-content-center">
+                  <label class="col-md-7 col-form-label">Account Type</label>
+                    <div class="col-md-4">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-warning rounded mr-2">Confirm</button>
+                      <button type="button" class="btn btn-danger rounded">Cancel</button>
+                    </div>
+                  </div>                    
+                </div>
+                  )
+                })
+              }
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
-    <div className="col-md-6" >
-      <div className="d-flex justify-content-between align-items-center mb-3">
-      <span><h2>For more files to upload</h2></span><button className="btn" onClick={addNewFile}>Add</button>
-      </div>
-        {
-          documenttags.map((doc,index)=>{
-            return(
-              <div key={index} className="d-flex justify-content-between align-items-center">
-                <label>{doc.label} {index+1}</label>
-                <input type={doc.type} onChange={documentUpload}/>
-                {/* <button className="btn" onClick={}>upload</button> */}
-                </div>
-            )
-          })
-        }
-      </div>
-      </div>
-      </div>
-
-      <div className="d-flex justify-content-center">
-        <button type="submit" className="btn btn-primary">Submit</button>
-      </div>
-      </form>
+    <div className="d-flex justify-content-center mt-4">
+      <button type="submit" className="btn1 btn-primary col-md-3">Submit</button>
+    </div>
+  </form>
 </section>
   </>
 }

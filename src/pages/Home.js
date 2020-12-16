@@ -5,34 +5,29 @@ import '../style/home.css'
 export default function Home() {
   return <>
       <section className="bg-img">
-        <div className="container">
-            <div className="card">
-            <div className="card-body">
-                <div className="row justify-content-center">
-                <div className="col-md-6">
+        <div className="container middle">
+            <div className="row justify-content-center">
+                <div className="col-md-5">
                     <img src={logo} className="img"/>
                 </div>
+            </div>
+            <div className="row justify-content-center">
                 <div className="col-md-6 btn-res">
                     <div className="row justify-content-center">
-                    <div className="col-md-12">
-                        <h3 className="h3 d-block p-4">DMS</h3>
-                    </div>
-                    <div className="col-md-7">
-                        <Link to="/newcustomer" className="btn btn-lg btn-block">
-                        <span>NEW</span>
-                        </Link>
-                    </div>
-                    <div className="col-md-7">
-                            <Link to="/existcustomer" className="btn btn-lg btn-block mt-4">
-                        <span>EXISTING</span>
-                        </Link>
-                    </div>
-                    </div>
-                </div>
-                </div>     
-            </div>  
+                        <div className="col-md-6">
+                            <Link to="/newcustomer" className="btn1 btn-lg btn-block">
+                            <span>NEW</span>
+                            </Link>
+                        </div>
+                        <div className="col-md-6">
+                                <Link to="/existcustomer" className="btn1 btn-lg btn-block">
+                            <span>EXISTING</span>
+                            </Link>
+                        </div>
+                    </div>                 
+                </div>  
+            </div>
         </div>
-        </div>
-</section>
+    </section>
   </>;
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from 'react-router-dom';
-import '../style/login.css'
+import '../style/login.css';
 export default function Error() {
 
   const [name, setName] = React.useState('')
@@ -19,20 +19,29 @@ export default function Error() {
     console.log(name)
     console.log(password)
   }
-  return <section className="container">
-      <div>
-      <h1>User Login</h1>
-      <form onSubmit={handleSubmit}>
-      <div>
-        <label>Username</label>
-        <input type="text" className="form-control" name="username" value={name} onChange={username}/>
-        </div>
-        <div>
-        <label>Password</label>
-        <input type="password" className="form-control" name="password" value={password} onChange={userpassword} />
-        </div>
-        <Link to="/home"><button type="submit" className="btn btn-primary" >Login</button></Link>
-        </form>
-      </div>
-  </section>;
+  return <section className="form-container">
+            <div className="container">
+              <div className="row justify-content-center">
+                <div class="col-md-5 col-sm-5 col-lg-5 middle">
+                    <form className="form-horizontal" onSubmit={handleSubmit}>
+                      <div className="form-icon">
+                        <i className="fa fa-user-circle"></i>
+                      </div>
+                      <div className="form-group">
+                        <span className="input-icon"><i class="fa fa-user"></i></span>
+                        <input class="form-control" placeholder="Username" name="username" value={name} onChange={username}/>
+                      </div>
+                      <div className="form-group">
+                        <span className="input-icon"><i class="fa fa-lock"></i></span>
+                        <input type="password" className="form-control" placeholder="Password" name="password" value={password} onChange={userpassword}/>
+                        <span className="forgot"><a href="">Forgot Password?</a></span>
+                      </div>                      
+                      <Link to="/home"><button type="submit" class="btn signin">Login</button></Link>
+                    </form>
+              </div>
+            </div>
+          </div>
+      </section>
+  
+  ;
 }
